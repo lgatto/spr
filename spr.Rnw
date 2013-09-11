@@ -1009,14 +1009,14 @@ Common problems:
 %% > x <- (1 + (2 * 3)
 %% + 
 %% \end{rc}
-<<wrong, eval=FALSE>>=
+<<wrong, eval=FALSE,highlight=FALSE>>=
 x <- (1 + (2 * 3)
 +
 @ 
 Hit \texttt{Ctrl C} (below) or keep typing!
 
 \item too many parens: 
-<<wrong2, eval=FALSE>>=
+<<wrong2, eval=FALSE,highlight=FALSE>>=
 2 + (2*3))
 @   
 
@@ -1677,7 +1677,7 @@ s2[1] > s2[2]
   \frametitle{Strings / character arrays}
   Character arrays are vectors of strings. \\
   Use  single (') or double (") quotes to mark strings, but don't mix:
-<<strgs, eval=FALSE>>=
+<<strgs, eval=FALSE,highlight=FALSE>>=
 x <- 'good'
 z <- "no'
 z <- "it's working"
