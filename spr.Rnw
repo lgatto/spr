@@ -338,7 +338,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Stable, multi-platform. 
     (2.15.2 "Trick or Treat" schedules for 26 October 2012; 
     2.16.0 due March/April 2013.)
-  \item \R-core now 20 people, key academics in field, 
+  \item R-core now 20 people, key academics in field, 
     including John Chambers.
   \end{itemize}
 \end{frame}
