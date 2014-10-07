@@ -133,8 +133,8 @@ moredelim=[is][\itshape]{(-}{-)},frame=single}}{}
 \newcommand{\colhalf}{\column{0.49\textwidth}}
 
 \author{
-  Laurent Gatto\footnote{\url{lg390@cam.ac.uk}}\footnote{\url{http://proteome.sysbiol.cam.ac.uk/lgatto/teaching/spr.html}}\\ 
-  Stephen Eglen  
+  Stephen Eglen\\
+  Laurent Gatto%%\footnote{\url{lg390@cam.ac.uk}}\footnote{\url{http://proteome.sysbiol.cam.ac.uk/lgatto/teaching/spr.html}}\\ 
 }
 \date{\today}
 
@@ -221,6 +221,7 @@ read_chunk('src/src.R')
   \item \R programming for Bioinformatics (CRC Press, Gentleman).
   \item Scientific programming and simulation using \R (CRC, Jones,
     Maillardet and Robinson).
+  \item The art of R programming (No Starch Press, Matloff).
   \item Writing Scientific Software (WSS) (CUP, Oliveira and Stewart).
     
   \item \url{www.r-project.org}, \url{www.rseek.org}, \url{www.r-bloggers.com}
@@ -334,10 +335,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Robert Gentleman (NZ).
   \item 1993: first announcement.
   \item 1995: 0.60 release, now under GPL.
-  \item 22 June 2012: release 2.15.1 "Roasted Marshmallows".  
-    Stable, multi-platform. 
-    (2.15.2 "Trick or Treat" schedules for 26 October 2012; 
-    2.16.0 due March/April 2013.)
+  \item 2014-10-07: release 3.1.1.
+    Stable, multi-platform. Major release every March/April.
   \item R-core now 20 people, key academics in field, 
     including John Chambers.
   \end{itemize}
@@ -353,8 +352,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Foreign-language interface (C/Fortran) when speed crucial, or
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
-  \item Comprehensive \R Archive Network (CRAN) $\sim$ 3318 packages
-    [2011-09-30] (cf 1000 in April 2007).
+  \item Comprehensive \R Archive Network (CRAN) $\sim$ 5913 packages
+    [2014-10-07] (cf 1000 in April 2007).
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -1446,7 +1445,7 @@ FALSE && stop("no")
 \end{frame}
 
 
-\begin{frame}[fragile]{Lazy}
+\begin{frame}[fragile]{Lazy \adv}
   \R uses \textit{Lazy evaluation}, which delays the evaluation of an expression 
   (here the argument) until its value is actually required 
     [\footnote{example from Hadley Wickham's devtools}]:
@@ -1645,7 +1644,7 @@ as.list(d)
 
 \begin{frame}[fragile]
   \frametitle{Factors \adv}
-<<factors>>= 
+<<factors,size='small'>>= 
 scores1 <- c('good', 'poor', 'bad', 'poor',
              'bad', 'bad', 'good')
 scores <- factor(scores1)
@@ -2047,7 +2046,7 @@ x <- scan('files/ages.dat', skip=1)
 summary(x)
 s1 <- readLines('files/ages.dat')  ## treats as strings
 summary(s1)
-h <- scan('http://goo.gl/go4Ze') ## heights.dat
+h <- scan('http://damtp.cam.ac.uk/user/sje30/r/heights.dat') ## heights.dat
 summary(h)
 @
 
@@ -2325,7 +2324,7 @@ vars; \Rfunction{codetools::findGlobals()} for globals.
 
 \begin{frame}[fragile]
   \frametitle{The \Robject{...} arguments}
-<<plt, out.width = '.4\\linewidth', fig.show = 'hold', size='tiny', fig.width = 6, fig.height = 4>>=
+<<plt, out.width = '.4\\linewidth', fig.show = 'hold', size='small', fig.width = 6, fig.height = 4>>=
 p <- function(x, y, ...) {
   if (diff(range(x)) > diff(range(y))) {
     plot(x, y, ...)
@@ -2333,7 +2332,8 @@ p <- function(x, y, ...) {
     plot(y, x, ...)
   }
 }
-p(rnorm(10, 0, 1), rnorm(10, 0, 5), main = "Expect swap", col = "red")
+p(rnorm(10, 0, 1), rnorm(10, 0, 5), main = "Expect swap",
+  col = "red")
 p(rnorm(10, 0, 5), rnorm(10, 0, 1), main = "No swap", pch = 19)
 @   
 
@@ -3272,7 +3272,7 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Reproducible research: Sweave and vignettes}
+  \frametitle{Reproducible research: Sweave, knitr and vignettes}
 
   \begin{itemize}
   \item Use one file to store code and document.  Best shown by way of
@@ -3282,11 +3282,14 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
     
   \item Interactively explore vignettes.    
 
-  \end{itemize}
 <<vexpl, tidy=TRUE, eval=FALSE>>=
 library("tkWidgets")
 vExplorer()
 @ 
+
+  \item knitr is the natural successor to Sweave.  It rocks!
+
+  \end{itemize}
 
 \end{frame}
 
