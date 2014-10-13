@@ -697,7 +697,7 @@ joe["height"] == joe[2]
   \item \Rfunction{mean()}, \Rfunction{sd()}, \Rfunction{var()}, \Rfunction{median()}
   \item \Rfunction{min()}, \Rfunction{max()}, \Rfunction{range()}, \Rfunction{summary()}
   \item \Rfunction{exp()}, \Rfunction{log()}, \Rfunction{sin()}, \Rfunction{cos()}, \Rfunction{tan()} (radians, not degrees)
-  \item \Rfunction{round()}, \Rfunction{ceil()}, \Rfunction{floor()}, \Rfunction{signif()}
+  \item \Rfunction{round()}, \Rfunction{ceiling()}, \Rfunction{floor()}, \Rfunction{signif()}
   \item \Rfunction{sort()}, \Rfunction{order()}, \Rfunction{rank()}
   \item \Rfunction{which()}, \Rfunction{which.max()}
   \item \Rfunction{any()}, \Rfunction{all()}
