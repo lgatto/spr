@@ -1500,7 +1500,7 @@ l$height  ## access an element.
 \begin{frame}[fragile]
   \frametitle{What is a list?}
   List elements can either be accessed by name 
-  (e.g. \Rfunction{l\$height} or \Rfunction{l[['heigth']]} -- if named list) %% $
+  (e.g. \Rfunction{l\$height} or \Rfunction{l[['height']]} -- if named list) %% $
   or by position (\Rfunction{l[[2]]}). \ds
   
   When using numbers to index list, compare \Rfunction{l[2]} (a list with one
