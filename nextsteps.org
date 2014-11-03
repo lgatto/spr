@@ -500,7 +500,7 @@ http://tolstoy.newcastle.edu.au/R/packages/10/0697.html
 
 ** Introduction
 - Applicable when repeating \textit{independent} computations a certain number of times; results just need to be combined after parallel executions are done. 
-- A cluster of nodes: generate multiple workers listening to the master; these workers are new processes that can run on the current machine or a similar one with an identical R installation. Should work on all \R plateforms (as in package \Rpackage{snow}).
+- A cluster of nodes: generate multiple workers listening to the master; these workers are new processes that can run on the current machine or a similar one with an identical R installation. Should work on all \R platforms (as in package \Rpackage{snow}).
 - The \R process is \textit{forked} to create new \R processes by taking a complete copy of the masters process, including workspace (pioneered by package \Rpackage{multicore}). Does not work on Windows.
 - Grid computing.
 
