@@ -82,7 +82,7 @@
 #+LATEX_HEADER:  \setbeamertemplate{navigation symbols}{}
 #+LATEX_HEADER:  \usepackage{listings}
 # what do these other options do? apart from toc?
-#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+
 
 #+MACRO: ALERT \alert{$1}
 #+MACRO: FIGURE \begin{centering}\includegraphics[$2]{$1}\par \end{centering} 
@@ -140,7 +140,7 @@ http://www.pement.org/awk/awk1line.txt
 \footnotesize
 #+INCLUDE: "nextsteps/version2.dat" src r
 
-   \note{ \url{~/txt/computing/diff_talk/diff_talk_notes.txt} }
+# \note{ \url{~/txt/computing/diff_talk/diff_talk_notes.txt} }
 
 
 ** diff and patch
@@ -151,13 +151,11 @@ http://www.pement.org/awk/awk1line.txt
 
 - /patch/:  new file = old file + diff
 
-## : patch < diff-file
-
 - /patches/ are efficient ways of sending updates.  Useful for syncing
   and version control.
 
 : diff version1.dat version2.dat > p
-: patch version1.dat p
+: patch < p
 : diff version1.dat version2.dat
 
 
@@ -174,7 +172,7 @@ http://www.pement.org/awk/awk1line.txt
 
 - G. Valiente. Combinatorial Pattern Matching Algorithms in Computational Biology using Perl and \R. Taylor & Francis/CRC Press (2009).
 
-- Verdict: yucky, but probably [essential | good to now].
+- Verdict: yucky, but probably [essential | good to know].
 
 - Bidirectional \R/Perl interfaces [[http://www.omegahat.org/RSPerl/]]
 
@@ -213,6 +211,26 @@ http://www.sabren.net/articles/againstperl.php3
 
 - Bidirectional \R/Python interface [[http://www.omegahat.org/RSPython/]]
 
+** Julia
+
+- Open-source project from MIT, "high-level, high-performance dynamic
+  programming language for technical computing"  http://julialang.org
+
+- Syntax similar to Matlab.
+
+- C like performance.  Proper Macros, influenced by lisp.  What's not
+  to like?
+
+- No version 1.0 yet.  Still rapidly changing.
+
+- No consensus yet on default plotting engine.
+
+- Small (compared to CRAN) list of packages, but growing.
+  e.g. BioJulia is quite small  https://github.com/BioJulia/Bio.jl
+  currently.
+
+- BUT my hope is Julia will soon (1--2 years) be seen as more
+  attractive than Matlab.
 
 * =C= and =C++= from \R
 
@@ -230,13 +248,13 @@ http://www.sabren.net/articles/againstperl.php3
 
 ** C from \R
 
-- \R has build-in \texttt{C} interfaces
+- \R has built-in \texttt{C} interfaces
   - Better know how to program in \texttt{C}.
   - Documentation is not always easy to follow: R-Ext, R Internals as well as \R and other package's code.
 
 - =.C=  Arguments and return values must be \textit{primitive} (vectors of doubles or integers)
 - =.Call= Accepts \R data structures as arguments and return values (\texttt{SEXP} and friends) (no type checking is done though).
-- Memory management: memory allocated for \R objects is garbage collected. Thus \R objects in \texttt{C} code, you must be explicitely \texttt{PROTECT}ed to 
+- Memory management: memory allocated for \R objects is garbage collected. Thus \R objects in \texttt{C} code must be explicitely \texttt{PROTECT}ed to 
       avoid being \texttt{gc()}ed, and subsequently \texttt{UNPROTECT}ed.      
 
 ** Using =.Call=
@@ -258,7 +276,7 @@ http://www.sabren.net/articles/againstperl.php3
   system.time(replicate(10000, table(strsplit(s, ""))))  
 #+end_src
 
-** \Rpackage{Rcpp} for =C++=
+** \protect\Rpackage{Rcpp} for =C++=
 - \Rpackage{Rcpp} is a great package for writing both =C= and =C++= code:
 - It comes with loads of documentation and examples. 
 - No need to worry about garbage collection. 
@@ -295,7 +313,7 @@ http://www.sabren.net/articles/againstperl.php3
 - Modern services like Dropbox are useful and build upon these unix
   tools.
 
-## {{{FIGURE(nextsteps/unison-conflict.png,width=8cm)}}}
+{{{FIGURE(nextsteps/unison-conflict.png,width=8cm)}}}
 
 
 
@@ -321,6 +339,7 @@ http://www.sabren.net/articles/againstperl.php3
 - Github, google code, bitbucket, ...
 - R-forge: svn and build system
 
+Got 15 minutes and want to learn Git?  http://try.github.com
 
 * Handling large files / databases
 
@@ -438,7 +457,7 @@ created at the end." (G. Grothendieck, r-help mailing list).
 
 - Good book: ~^((HT|X)M|SQ)L|R$~
 
-  Introduction to Data Technologies.
+  Introduction to Data Technologies (Paul Murrell).
 
 #+LATEX: \url{http://www.stat.auckland.ac.nz/~paul/ItDT/}
 
@@ -482,7 +501,7 @@ http://tolstoy.newcastle.edu.au/R/packages/10/0697.html
 ** Introduction
 - Applicable when repeating \textit{independent} computations a certain number of times; results just need to be combined after parallel executions are done. 
 - A cluster of nodes: generate multiple workers listening to the master; these workers are new processes that can run on the current machine or a similar one with an identical R installation. Should work on all \R plateforms (as in package \Rpackage{snow}).
-- The \R process is \textit{forked} to create new \R~processes by taking a complete copy of the masters process, including workspace (pioneered by package \Rpackage{multicore}). Does not work on Windows.
+- The \R process is \textit{forked} to create new \R processes by taking a complete copy of the masters process, including workspace (pioneered by package \Rpackage{multicore}). Does not work on Windows.
 - Grid computing.
 
 ** Packages
@@ -552,7 +571,7 @@ http://tolstoy.newcastle.edu.au/R/packages/10/0697.html
 #+end_src
 
 
-* Differential equations and phase plane analysis
+* Differential equations and phase plane analysis		   :noexport:
 
 ** Lotka–Volterra equations
 
