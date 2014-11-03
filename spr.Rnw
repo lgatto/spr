@@ -1712,6 +1712,14 @@ x <- 1:5; exp.dir <- '/home/stephen/res'
 file <- paste(exp.dir, '/expt_res', x, '.dat', sep='')
 file
 @ 
+\end{frame}
+
+\begin{frame}
+  \frametitle{paste0}
+
+Don't forget \Rfunction{paste0()} where sep=''.
+
+(Humour): \url{http://simplystatistics.org/2013/01/31/paste0-is-statistical-computings-most-influential-contribution-of-the-21st-century/}
 
 \end{frame}
 
