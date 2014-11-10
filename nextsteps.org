@@ -195,7 +195,7 @@ and for sequence data storing and manipulation
 while (<>) {             | import sys
     print if /perl/i;    | for line in sys.stdin.readlines():
 }                        |     if line.lower().find("perl") > -1:
-                         |         print line,
+#                        |         print line,
 http://www.sabren.net/articles/againstperl.php3
 #+end_src
 \normalsize
