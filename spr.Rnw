@@ -1,5 +1,4 @@
 %% R programming course notes --- Stephen Eglen
-%% $Id: rpc.tex,v 1.45 2012/01/03 15:50:36 stephen Exp $
 %% http://www.damtp.cam.ac.uk/user/sje30/
 %% Modified by Laurent Gatto <lg390@cam.ac.uk>
 %% - misc minor updates
@@ -60,7 +59,8 @@
 %% There is an extra makefile that will help with creating versions of
 %% the lecture notes either for the lecturer:
 %%
-%% make rpc.pdf
+%% make spr.pdf
+%% make spr-4up.pdf
 %% 
 %% or the student (4-up, A4 paper):
 %%
@@ -1004,20 +1004,20 @@ Logical errors are harder to find! \ds
 Common problems:
 \begin{itemize}
 \item missing close bracket leads to  continuation line.
-%% \begin{rc}
-%% > x <- (1 + (2 * 3)
-%% + 
-%% \end{rc}
-<<wrong, eval=FALSE,highlight=FALSE>>=
-x <- (1 + (2 * 3)
-+
-@ 
+\begin{rc}
+> x <- (1 + (2 * 3)
++ 
+\end{rc}
+%% <<wrong, eval=FALSE,highlight=FALSE,error=TRUE>>=
+%% x <- (1 + (2 * 3)
+%% @ 
 Hit \texttt{Ctrl C} (below) or keep typing!
 
 \item too many parens: 
-<<wrong2, eval=FALSE,highlight=FALSE>>=
-2 + (2*3))
-@   
+%%<<wrong2, eval=FALSE,highlight=FALSE>>=
+\begin{rc}
+2 + (2*3))    
+\end{rc}
 
 \item wrong/mismatched brackets (see next slide).
 \item Likewise, do not mix double quotes and single quotes. \\
@@ -1678,7 +1678,7 @@ s2[1] > s2[2]
   Use  single (') or double (") quotes to mark strings, but don't mix:
 <<strgs, eval=FALSE,highlight=FALSE>>=
 x <- 'good'
-z <- "no'
+z <- "no'  # need to match"
 z <- "it's working"
 @
 \end{frame}
