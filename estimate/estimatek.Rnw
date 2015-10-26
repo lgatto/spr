@@ -60,10 +60,14 @@ require(knitr)
 knit2pdf('estimatek.Rnw')
 @ 
 
+Within RStudio, there is a handy ``Compile PDF'' button.
+
 knitr is newer than Sweave, and is more flexible.  Both estimatek.Rnw
 and estimatek.pdf are available from:
 
-\url{http://www.damtp.cam.ac.uk/user/sje30/rguide}
+\url{https://github.com/lgatto/spr/tree/master/estimate}
+
+(you will need \url{estimate.Rnw} and \url{diff.R})
 
 One key difference between Sweave and knitr is that knitr has built-in
 support for caching.  By default it is turned off in this document,
@@ -144,7 +148,7 @@ as clearly the estimate will vary from run to run.  In the following
 plot, we compare the estimates of $\pi$ for three different values of $n$:
 
 \begin{center}
-<<fig=TRUE>>=
+<<>>=
 ns <- 10^c(2,3,4)
 res <- lapply(ns, function(n) replicate(99, estimate.pi(n)))
 par(las=1, bty='n')
