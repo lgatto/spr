@@ -144,26 +144,30 @@ replicate(9, estimate.pi())
 @ 
 
 Finally, for a given value of $n$, we can show 99 estimates of $\pi$,
-as clearly the estimate will vary from run to run.  In the following
-plot, we compare the estimates of $\pi$ for three different values of $n$:
+as clearly the estimate will vary from run to run.  In
+Figure~\ref{fig:n}, we compare the estimates of $\pi$ for three
+different values of $n$.
 
-\begin{center}
-<<>>=
-ns <- 10^c(2,3,4)
-res <- lapply(ns, function(n) replicate(99, estimate.pi(n)))
-par(las=1, bty='n')
-stripchart(res, method="jitter", group.names=ns, 
-           xlab="number of darts",
-           ylab=expression(paste('estimate of ', pi)),
-           vert=TRUE, pch=20, cex=0.5)
-abline(h=pi, col='red')
-@ 
-\end{center}
 
-As the number of darts increases, the estimate of $\pi$ gradually
-converges onto the actual value of $\pi$ (shown by the solid red line).
+\begin{figure}[h!]
+  \centering
+  <<out.width='.8\\linewidth'>>=
+  ns <- 10^c(2,3,4)
+  res <- lapply(ns, function(n) replicate(99, estimate.pi(n)))
+  par(las=1, bty='n')
+  stripchart(res, method="jitter", group.names=ns, 
+               xlab="number of darts",
+               ylab=expression(paste('estimate of ', pi)),
+               vert=TRUE, pch=20, cex=0.5)
+  abline(h=pi, col='red')
+  @
+\caption{Mone-Carlo estimates of $\pi$ improve as n increases.  Red line
+  denotes the true value of $\pi$.}
+\label{fig:n}
+\end{figure}
 
 \clearpage
+
 \section*{xtable}
 
 xtable provides a convenient interface for making tables.  Here's a
