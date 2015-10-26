@@ -335,9 +335,9 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Robert Gentleman (NZ).
   \item 1993: first announcement.
   \item 1995: 0.60 release, now under GPL.
-  \item 2014-10-07: release 3.1.1.
-    Stable, multi-platform. Major release every March/April.
-  \item R-core now 20 people, key academics in field, 
+  \item 2015-08-14: release 3.2.2.
+    Stable, multi-platform. Major release every April.
+  \item R-core now 21 people, key academics in field, 
     including John Chambers.
   \end{itemize}
 \end{frame}
@@ -1361,7 +1361,7 @@ x  *  i      ## not x!
   \frametitle{Common matrix operations}
   \begin{itemize}
   \item transpose: \Rfunction{t(x)}
-  \item \Rfunction{dim}, \Rfunction{row}, \Rfunction{ncol}
+  \item \Rfunction{dim}, \Rfunction{nrow}, \Rfunction{ncol}
   \item inverse: \Rfunction{solve(x)}, 
 \end{itemize}
 <<inverse>>=
