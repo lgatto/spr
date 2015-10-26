@@ -61,8 +61,20 @@ knit2pdf('estimatek.Rnw')
 @ 
 
 knitr is newer than Sweave, and is more flexible.  Both estimatek.Rnw
-and estimatek.pdf are available from: \\
-\url{http://proteome.sysbiol.cam.ac.uk/lgatto/teaching/files/estimate.zip}
+and estimatek.pdf are available from:
+
+\url{http://www.damtp.cam.ac.uk/user/sje30/rguide}
+
+One key difference between Sweave and knitr is that knitr has built-in
+support for caching.  By default it is turned off in this document,
+but change FALSE to TRUE in the following code-chunk and see if you
+can work out what happens:
+
+<<setup>>=
+require(knitr)
+require(xtable)
+opts_chunk$set(cache=FALSE)      # $ (dollar needed by Emacs.)
+@ 
 
 \section{Task: estimate the value of $\pi$}
 
@@ -147,6 +159,40 @@ abline(h=pi, col='red')
 As the number of darts increases, the estimate of $\pi$ gradually
 converges onto the actual value of $\pi$ (shown by the solid red line).
 
+\clearpage
+\section*{xtable}
+
+xtable provides a convenient interface for making tables.  Here's a
+simple example.
+
+<<results='asis'>>=
+df = data.frame(name=c("joe", "ann", "bob"),
+  age=c(19, 24, 27),
+  height=c(1.8, 1.75, 1.7))
+xtable(df)
+@ 
+
+Or, see how you can wrap it into a table environment, e.g. see
+Table~\ref{tab:example}.
+
+<<results='asis'>>=
+xtable(df, caption="Example output from xtable.",label="tab:example")
+@ 
+
+
+\section*{Listing}
+Finally, an example listing.  We read in all the code from a given
+file (here diff.R) and then assign it to the ``all'' label which we
+then include without evaluation:
+
+<<external-code,chunk=FALSE,include=FALSE>>=
+read_chunk('diff.R',labels='all')
+@ 
+<<all,eval=FALSE>>=
+@ 
+
+See \url{http://yihui.name/knitr/demo/externalization/} for further
+information.
   
 
 \end{document}
