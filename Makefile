@@ -31,8 +31,8 @@ clean:
 	rm -rf hist.pdf hist.png
 	rm -rf spr.tex rr.tex fibonacci.tex
 
-rr.pdf: rr.tex
-	pdflatex rr.tex
+rr.pdf: rr.md
+	pandoc -r markdown+simple_tables -t beamer --slide-level=2 --standalone -H rr-preamble.tex rr.md -o rr.pdf
 
 rr.tex: rr.md
 	pandoc -r markdown+simple_tables -t beamer --slide-level=2 --standalone -H rr-preamble.tex rr.md -o rr.tex
