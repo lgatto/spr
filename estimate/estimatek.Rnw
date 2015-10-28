@@ -1,3 +1,5 @@
+% Tell Rstudio this is a knitr document
+% !Rnw weave = knitr
 \documentclass[12pt]{article}
 \usepackage{mathpazo}
 \usepackage{hyperref,url}
