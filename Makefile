@@ -26,7 +26,14 @@ fib.R:
 clean:
 	rm -f *.dvi *.aux *.log *.nav *.out *.snm *.toc *~ *vrb 
 	rm -f */*~
+	rm -f rr.tex
 	rm -rf figure cache
 	rm -rf hist.pdf hist.png
 	rm -rf spr.tex rr.tex fibonacci.tex
+
+rr.pdf: rr.tex
+	pdflatex rr.tex
+
+rr.tex: rr.md
+	pandoc -r markdown+simple_tables -t beamer --slide-level=2 --standalone -H rr-preamble.tex rr.md -o rr.tex
 
