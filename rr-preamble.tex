@@ -1,0 +1,25 @@
+\usepackage{verbatim}
+\usepackage{moreverb}
+
+\mode<presentation>
+{
+  \setbeamersize{text margin left=0.25cm}
+  \setbeamersize{text margin right=0.25cm}
+
+  \beamertemplatedotitem
+
+  \beamertemplateheadempty %% Remove headline (at top of frame)
+  %% \beamertemplatefootempty %% Remove headline (at top of frame)
+  \beamertemplatefootpagenumber %% pagenumber only in footer.
+  %% Remove navigation icons.
+  \beamertemplatenavigationsymbolsempty
+  %% Show start of every lecture. Not available in article.
+  %% \AtBeginLecture{\begin{frame}{\Large Lecture \insertlecture}\end{frame}}
+}
+
+
+\newcommand{\Slang}{\texttt{S} }
+\newcommand{\R}{\texttt{R} }
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
