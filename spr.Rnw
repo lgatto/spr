@@ -352,8 +352,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Foreign-language interface (C/Fortran) when speed crucial, or
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
-  \item Comprehensive \R Archive Network (CRAN) $\sim$ 5913 packages
-    [2014-10-07] (cf 1000 in April 2007).
+  \item Comprehensive \R Archive Network (CRAN) $\sim$ 9280 packages
+    [2016-10-04] (cf 1000 in April 2007).
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
