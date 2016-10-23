@@ -1,6 +1,6 @@
 % Reproducible research with Make and Sweave/knitr
 % Stephen Eglen
-% October 2015
+% October 2016
 
 # Organising code
 
@@ -348,7 +348,7 @@ avoid this by using **cache=TRUE** in the knitr options.
 
 1.  Makefile: report.pdf
 2.  Using `kntir`: `estimatek.Rnw` and `estimatek.pdf`
-3.  Sweave: `estimate.Rnw` and `estimate.pdf`
+
 
 
 All available from https://github.com/lgatto/spr/tree/master/estimate
