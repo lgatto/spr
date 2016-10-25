@@ -2954,6 +2954,19 @@ Solution - testing \textit{near equality}
 all.equal( 0.1 + 0.2, 0.3)
 @ 
 
+If there is a difference, you get a summary of differences.  Within a
+function, you might prefer just to test whether result is
+TRUE or not:
+
+<<>>=
+x = 1:4
+y = rnorm(4,sd=0.2)
+all.equal(x,y)
+isTRUE(all.equal(x,y))
+@ 
+
+
+
 %% How can we find out biggest and smallest numbers that can be stored
 %% in a double precision number?
 \end{frame}
