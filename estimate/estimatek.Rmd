@@ -13,6 +13,9 @@ output:
 Not everything is yet working (October 2016) in this document,
 compared to the Rnw version.  The bookdown package might be more
 useful for generating cross-references to figure and table captions.
+Compared to LaTeX, I think there is less flexibility for writing
+papers/reports, but for simple documents, the Rmd approach may be
+quicker to write and sufficient for your needs.
 
 # Introduction
 
@@ -30,12 +33,12 @@ require(rmarkdown)
 render('estimatek.Rnw')
 ```
 
-<!-- Within RStudio, there is a handy ompile PDF  button. -->
+Within RStudio, there is a handy "Knit HTML"  button.
 
 knitr is newer than Sweave, and is more flexible.  Both estimatek.Rmd
-and estimatek.pdf are available from: `https://github.com/lgatto/spr/tree/master/estimate`
-
-(you will need `estimatek.Rmd` and `diff.R`)
+and estimatek.html are available from:
+https://github.com/lgatto/spr/tree/master/estimate (you will need
+`estimatek.Rmd` and `diff.R`)
 
 One key difference between Sweave and knitr is that knitr has built-in
 support for caching.  By default it is turned off in this document,
@@ -103,15 +106,12 @@ estimate.pi <- function(n=1000) {
 }
 ```
 
-
 We can then test the procedure a few times, using the default number
 of darts, 1000:
 
 ```{r}
 replicate(9, estimate.pi())
 ```
-
-
 Finally, for a given value of $n$, we can show 99 estimates of $\pi$,
 as clearly the estimate will vary from run to run.  In
 Figure~\ref{fig:n}, we compare the estimates of $\pi$ for three
