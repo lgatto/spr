@@ -1,0 +1,178 @@
+---
+title: "Example knitr document: estimating π"
+author: Stephen J Eglen
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+## Disclaimer
+
+Not everything is yet working (October 2016) in this document,
+compared to the Rnw version.  The bookdown package might be more
+useful for generating cross-references to figure and table captions.
+
+# Introduction
+
+This is an example document created using the knitr system
+http://yihui.name/knitr/.  knitr is a tool for combining both
+documentation and R code within the same file, similar to Sweave.  For
+this document, the master file is `estimatek.Rmd`.  This is processed
+by knitr in R, which runs the R code to generate textual/graphical
+output, and also creates a HTML document.  On recent machines, once
+rmarkdown and kntir are installed, you should be able to generate the
+pdf using:
+
+```{r eval=FALSE,include=TRUE}
+require(rmarkdown)
+render('estimatek.Rnw')
+```
+
+<!-- Within RStudio, there is a handy ompile PDF  button. -->
+
+knitr is newer than Sweave, and is more flexible.  Both estimatek.Rmd
+and estimatek.pdf are available from: `https://github.com/lgatto/spr/tree/master/estimate`
+
+(you will need `estimatek.Rmd` and `diff.R`)
+
+One key difference between Sweave and knitr is that knitr has built-in
+support for caching.  By default it is turned off in this document,
+but change FALSE to TRUE in the following code-chunk and see if you
+can work out what happens:
+
+```{r setup}
+require(knitr)
+require(xtable)
+require(printr)
+opts_chunk$set(cache=FALSE)      # $ (dollar needed by Emacs.)
+```
+
+#  Task: estimate the value of $\pi$
+
+Our task is to estimate the value of $\pi$ by simulating darts being
+thrown at a dartboard.  Imagine that the person throwing the darts is
+not very good, and randomly throws each dart so that it falls
+uniformly within a square of side length $2r$, with the dartboard of
+radius $r$ centred within that square.  If the player throws $n$
+darts, and $d$ of them hit the dartboard, then for large enough $n$,
+the ratio $d/n$ should approximate the ratio of the area of the
+dartboard to the enclosing square, $\pi r^2 / 4 r^2 \equiv \pi/4$.
+From this, we can estimate $\pi \approx 4d/n$.
+
+We start with an example, using R to draw both the dartboard and the
+surrounding square, together with `n=50` darts.  The radius of the
+dartboard here is 1 unit, although the value is not important.
+
+```{r}
+r <- 1
+n <- 50
+par(las=1)
+plot(NA, xlim=c(-r,r), ylim=c(-r,r), asp=1, bty='n',
+     xaxt='n', yaxt='n', xlab='', ylab='')
+axis(1, at=c(-r,0,r)); axis(2, at=c(-r,0,r))
+symbols(x=0, y=0, circles=r, inch=F, add=T)
+x <- runif(n, -r, r);  y <- runif(n, -r, r)
+inside <- (x^2 + y^2) < r^2
+d <- sum(inside)
+points(x, y, pch=ifelse(inside, 19, 4))
+rect(-r, -r, r, r, border='blue', lwd=2)
+```
+
+A dart is drawn as a filled circle if it falls within the dartboard,
+else it is drawn as a cross.  In this case the number of darts within
+the circle is `r d`, and so the estimated value is $\pi \approx
+`r {4*d/n}`$.
+
+The estimate of $\pi$ should improve as we increase the number of darts
+thrown at the dartboard.  To verify this, we write a short function
+that, given the number of darts to throw, $n$, returns an estimate of
+$\pi$.
+
+```{r}
+estimate.pi <- function(n=1000) {
+  ## Return an estimate of PI using dartboard 
+  ## method with N trials.
+  r <- 1 ## radius of dartboard
+  x <- runif(n, min=-r, max=r)
+  y <- runif(n, min=-r, max=r)
+  l <- sqrt(x^2 + y^2)
+  d <- sum(l<r)
+  4*d/n
+}
+```
+
+
+We can then test the procedure a few times, using the default number
+of darts, 1000:
+
+```{r}
+replicate(9, estimate.pi())
+```
+
+
+Finally, for a given value of $n$, we can show 99 estimates of $\pi$,
+as clearly the estimate will vary from run to run.  In
+Figure~\ref{fig:n}, we compare the estimates of $\pi$ for three
+different values of $n$.
+
+
+```{r}
+ns <- 10^c(2,3,4)
+res <- lapply(ns, function(n) replicate(99, estimate.pi(n)))
+par(las=1, bty='n')
+stripchart(res, method="jitter", group.names=ns, 
+           xlab="number of darts",
+           ylab=expression(paste('estimate of ', pi)),
+           vert=TRUE, pch=20, cex=0.5)
+abline(h=pi, col='red')
+```
+
+<!-- 
+\caption{Mone-Carlo estimates of $\pi$ improve as n increases.  Red line
+denotes the true value of $\pi$.}
+\label{fig:n}
+-->
+ 
+# printr
+
+The printr package provides a convenient interface for making tables.
+Here's a simple example.
+
+```{r}
+df = data.frame(name=c("joe", "ann", "bob"),
+  age=c(19, 24, 27),
+  height=c(1.8, 1.75, 1.7))
+df
+```
+
+Or you can add a caption:
+<!-- Table~\ref{tab:example}. -->
+
+```{r}
+kable(df, caption="Example output from xtable.",label="tab:example")
+```
+
+
+# Listing
+
+Finally, an example listing.  We read in all the code from a given
+file (here diff.R) and then assign it to the ``all'' label which we
+then include without evaluation:
+
+```{r external-code,chunk=FALSE,include=FALSE}
+read_chunk('diff.R',labels='all')
+```
+
+```{r all,eval=FALSE}
+```
+
+See http://yihui.name/knitr/demo/externalization/ for further
+information.
+
+## Compiling this document
+
+```{r eval=FALSE}
+rmarkdown::render('estimatek.Rmd')
+```
