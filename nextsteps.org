@@ -223,7 +223,8 @@ http://www.sabren.net/articles/againstperl.php3
 
 - No version 1.0 yet.  Still rapidly changing.
 
-- No consensus yet on default plotting engine.
+- No consensus yet on default plotting engine (but Plots.jl is
+  semi-unifying interface).
 
 - Small (compared to CRAN) list of packages, but growing.
   e.g. BioJulia is quite small  https://github.com/BioJulia/Bio.jl
@@ -569,6 +570,29 @@ http://tolstoy.newcastle.edu.au/R/packages/10/0697.html
               "elapsed", "relative"),
             order = "relative", replications = 10)
 #+end_src
+
+
+** Tidyverse
+
+- Hadley Wickham has now generated a whole universe of alternative
+  packages for tidying things up.
+
+- Over time, things in R have got quite messy.
+
+- https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/
+#+BEGIN_QUOTE
+The tidyverse is a set of packages that work in harmony because they
+share common data representations and API design. The tidyverse
+package is designed to make it easy to install and load core packages
+from the tidyverse in a single command.
+#+END_QUOTE
+
+- Was called the "Hadleyverse", now called "Tidyverse"
+
+- e.g. devtools (essential), ggplot2 (???), readr (fast), readxl (no
+  external dependencies).
+
+- https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/
 
 
 * Differential equations and phase plane analysis		   :noexport:
