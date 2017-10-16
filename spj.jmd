@@ -1,0 +1,568 @@
+---
+title : Scientific programming with Julia
+author : Stephen J Eglen
+date : 2017-10-05
+---
+# Outline
+# Books and online help
+# Aims of course 
+# Part 2: Scientific computing issues
+# What is Julia?
+
+Invented by MIT guys with selfish aims
+
+# History
+
+appeared "a few years ago"
+
+# Strengths of \R
+
+fast, efficient, great development team
+
+# Graphics example
+
+# Weaknesses of Julia
+
+still developing.  precompilation helps, but loading libraries
+(e.g. Gadfly) v slow.
+
+# Brief comparison to matlab
+
+???
+
+
+# Using Julia
+
+Julia/Jupyter /Juno.
+
+# My very first Julia session
+
+
+```{julia}
+x = randn(50) * 4
+x
+mean(x)
+minimum(x), maximum(x)
+#Pkg.add("Plots"); Pkg.add("GR")
+using Plots; gr()
+histogram(x, nbins=10, title="my first plot")
+```
+
+
+# Interacting with Julia
+
+* Can use up/down keys to go through command history.
+* Use semicolon to suppresss output and to put multiple commands on one line.
+* TAB for completion.
+
+# Objects and Functions
+
+naming conventions for objects.  No assignment arrow in Julia.
+
+# Objects and Functions
+
+```{julia}
+x = 200
+half_x = x / 2
+threshold = 95.0
+age = [15 19 30]
+age[2]
+length(age)
+```
+
+
+# Vectors
+
+Fundamental type in Julia. Scalars are distinct from Vectors.
+
+```{julia;term=true}
+y = [10 20 40]
+y[2]
+length(y)
+typeof(y)
+y = 5
+length(y)
+typeof(y)
+```
+
+Note how it changes type.
+# Vectors
+
+Some operations work element by elment, others on the whole vector.,
+compare:
+
+```{julia}
+y = [20 49 16 60 100]
+minimum(y)
+(minimum(y), maximum(y))
+sqrt.(y)
+log.(y)
+```
+
+TODO: dot notation for extending to vector.  Broadcasting.
+
+# Generating vectors
+
+TODO: Ranges treated differently, to save space.  To expand a range
+from its compact notation to a normal vector, use `collect`.
+
+```{julia}
+1:2:9
+x = collect(1:2:9)
+y = collect(linspace(2, 7, 3))
+z = 4:8
+a = 1:5
+b = [3 9 2]
+d = [collect(a)' 10 b]
+e = repmat( [1 2], 3)[:]
+f = zeros(7)
+## TODO: distinction: row vs col vectors
+```
+
+# Accessing and setting elements
+
+```{julia;term=true}
+x = collect(100:1:119)
+x[3] ## just element 3
+x[[12 14]]
+x[1:5]
+bad = 1:4
+## TODO negated indexes not present?
+x[end]
+```
+
+Julia does not index by negation.  It does however allow you to use
+the `end` keyword to get the last element.
+
+
+# Accessing and setting elements
+
+```{julia;term=true}
+x = [5 2 9 4]
+v = [true false false true]
+x[v]
+```
+
+
+Use logical elements to access.
+
+
+# Accessing and setting elements
+
+```{julia}
+x = zeros(10)
+x[1:3] = 2
+x[5:6] = [-5 NaN]
+## x[7:10] = [1 9] ## will error - no recycling
+```
+
+# Recycling rule \adv
+
+TODO: recyling absent?
+
+repmat() and friends might be needed.
+
+vector + scalar works
+
+``` julia
+[1 2] + 3
+```
+
+# Naming indexes of a vector
+TODO: not possible?
+
+# Common functions for vectors
+
+* length()
+* reverse()
+* sum, cumsum, prod, cumprod
+* minimum, maximum, range?, summary?
+
+# Functions as function args
+
+
+```{julia}
+x = [3, 2, 9, 4]
+
+y = exp.(x); z1 = find(y .> 20.0) ## case 1
+z2 = find( exp.(x) .> 20.0)       ## case 2
+
+z1 == z2
+```
+
+# Default values for function arguments
+```{julia}
+x = [2.091, 4.126, 7.925]
+round.(x)
+round.(x, 2) # TODO not named arguments... is round best example?
+```
+# Default values for function arguments
+# Argument matching
+# Argument matching
+#  \ldots in function calls \adv
+
+splat ?
+
+# Replacement functions \adv
+no such equivalent.
+# Getting help: key commands
+
+?round
+
+# Numbers and special values
+
+Key numerical types:
+* Integer 
+* Float64 ("double")
+* Float32 ("single precision")
+* TODO: complex values.
+
+TODO: check children of an abstract type -- how to generate tree?
+
+```{julia}
+typeof(1)
+typeof(1.0)
+isa(1, Float64)
+isa(1.0, Float64)
+##  TODO isnumber(4)
+```
+
+# Numbers and special values
+
+Julia does not have NA in base language (might be in the Statistics
+modules)
+
+```{julia}
+0/0
+3/0
+(-1)/0
+isnan(0/0)
+isinf(3/0)
+nothing
+typeof(nothing)
+```
+
+
+# Operator precedence
+
+```{julia}
+3 * 4 + 2 != 3 * (4 + 2)
+2^3+1  != 2^(3+1)
+1:5-1 # (cf R)
+```
+
+
+
+# Operator precedence \Rfunction ?Syntax
+
+TODO: find the precedence list
+
+# Operators
+
+
+```{julia}
+x = 10
+x == 4     ## test for equality
+x != 10    ## not equal?
+div(7, 2)  ## division, ignoring remainder... (3)
+7 ÷ 2      ## ... the unicode way.
+7 % 2      ## remainder (1)]
+10.1^2.5   ##  10.1 ** 25 not allowed.
+[1 2] === [1 2]
+a = [1 2]; a === a
+```
+
+TODO: globals not an issue?
+    
+
+
+# When things go wrong
+# Types of parentheses
+
+    
+# From interactive to source files
+
+Edit--run--edit cycle.
+
+See contents of [src/trig.jl](src/trig.jl)
+# Scripts
+
+
+```{julia}
+include("src/trig.jl")
+```
+
+# Why are scripts a good thing?
+
+
+# Running scripts in batch \adv
+# Rscript
+no equivalent
+
+# Matrices
+
+Matrices can be made directly or converted from vectors.
+
+```{julia}
+x = reshape(1:6, 2,3)
+y = [1 2 3; 4 5 6]
+z = hcat(1:3, 4:6)'
+x = y
+```
+
+
+
+# Matrices
+
+```{julia}
+x[2,2] ## extracting a value.
+x[1,:]  ## extracting row
+x[1:2, 2:3]
+x[:,2]  ## not column vector!
+```
+
+TODO: consider views vs copies.
+# Typical matrix construction methods
+
+
+```{julia}
+reshape(1:6, (2,3))
+x = vcat( [1 4 9], [2 6 8], [3 2 1])
+y = hcat( [1 2 3]', ones(3,1)*5, [4 5 6]')
+```
+
+# Typical matrix construction methods
+
+Matrix indices are not named in Julia
+
+# Common matrix operations
+
+```{julia}
+x = [1.0 2.0; 3.0 4.0];
+i = eye(2)
+x * i
+x'     ## transpose
+inv(x) ## inverse of a matrix
+x * inv(x)
+isapprox(x * inv(x), eye(x))
+x * inv(x) ≈ eye(x)  ## unicode way
+```
+
+## Arrays
+
+Multidimensional matrices
+
+```{julia}
+a = reshape(collect(1.0:12.0), 2, 2, 3)
+```
+
+
+
+# Boolean values
+
+logical values `true` and `false` take the values 1 and 0 as in other
+languages.  But you cannot use "1" where a boolean "true" is expected.
+
+```{julia}
+true + true
+```
+
+
+# Boolean values
+
+```{julia}
+d = [3.1 1.0 4.0 9.2 2.3 8.1 6.3]
+d .> 5.0
+d[d .> 5.0]
+find( d .> 5.0)
+```
+
+
+# Boolean values
+
+ifelse vectorized?
+
+```{julia}
+(10 > 20) ? 5 : 3  # just like C
+d = collect(1.0:10.0)
+ifelse.( d .> 3.0, 1.0, 0.0)
+```
+
+
+
+# Boolean values -- \Rfunction ?logical
+
+```{julia}
+!true
+true & false
+false | true
+xor(true, true)
+```
+
+# Boolean logic: issues
+
+Lazy evaluation is complicated here?  `&&` and `||` are lazy operators
+
+
+```{julia}
+true || sleep(1000)
+```
+
+
+# What is a list?
+
+Two ways of getting a list in Julia; with a `Dict` so that they can be
+named (but not indexed by number), or with a vector.
+
+```{julia}
+d = Dict("who"=>"joe",
+         "height"=> 1.70,
+         "dob" => [1960 12 1])
+length(d)
+keys(d)
+d["height"]
+##d[2]                            # error
+## the vector approach
+l = ["joe", 1.70, [1960 12 1]]
+length(l)
+l[2]
+```
+
+# Data frames
+
+Not in core Julia; see DataFrames package.
+
+# Factors
+???
+
+# Strings / character arrays
+
+Use double quotes for strings in Julia.
+
+```{julia}
+x = "good"
+```
+
+# Strings / character arrays
+
+```{julia}
+print("Now computing the steady state\n")
+
+
+## julia specific bits TODO mode
+## push!, pop!, shift!, unshift!
+x = 134
+print("sqrt of $(x) is $(sqrt(x))")
+```
+
+# Strings / character arrays
+
+```{julia}
+x = collect(1:5); exp_dir = "/home/stephen/res"
+## TODO fix
+##@sprintf("hello %d %s", x[2], exp_dir)
+##[@sprintf("hello %d %s" i, exp_dir) for i in x]
+```
+
+TODO: paste doesn't seem to have a flexible friend in Julia.  join may
+be the closest relative.
+
+
+# Strings
+```{julia}
+## https://docs.julialang.org/en/stable/manual/strings/
+s =["apples" "bee" "cars" "danish" "egg"]
+length(s)
+length.(s)
+## substr todo
+```
+
+# Strings
+# Strings
+# Environments \adv
+# Inspecting variables and the environment
+# Converting an object from one type to another
+# What is an object?
+# OO programming in \R
+# Basic plotting
+# Basic plotting
+# Basic plotting
+# Options controlling the plot
+# Multiple data sources on one plot
+# Multiple plots in one figure
+# Saving your plots
+# Next steps with plotting \adv
+# Reading/writing data to file system
+# Interacting with the file system
+# Scan, write, readLines
+# Scan, write, readLines
+# \Rfunction read.table et al.
+# \texttt Rdata files
+# Saving your workspace with \texttt .RData files
+# Further I/O functions \adv
+# Writing functions: overview
+# Functions
+# Functions
+# Example of writing a new function
+# Terminology of variables within functions
+# Handling unbound variables
+# Handling unbound variables (2)
+# The \Robject ... arguments
+# The \Robject ... arguments
+# Writing a replacement function \adv
+# Tips for writing functions
+# Control-flow constructs
+# if / if ... else ...
+# Braces in conditional constructs
+# switch \adv
+# Recursive functions
+# Looping constructs
+# for loops
+# while loops
+# Breaking out of loops
+# Breaking out of loops
+# A word on indentation
+# Vectorization
+# Vectorization example
+# apply family
+# apply family
+# Anonymous functions \adv
+# Fibonacci sequence
+# Efficiency
+# Trading space and time
+# A final word on efficiency
+# Numerics issues
+# Numerics issues
+# How big is infinity?
+# How small is epsilon?
+# Random number generation
+# Debugging \adv
+# Warnings and errors
+# Traceback
+# Single-stepping through your code
+# Safety-checks: browser
+# recover
+# Packages
+# CRAN: Comprehensive \R Archive Network
+# Managing libraries
+# Bioconductor
+# Other topics of interest \adv
+# Reproducible research: Sweave, knitr and vignettes
+# Misc to fill in
+# Complex numbers
+# Attributes
+# Top-N functions not listed elsewhere...
+# Foreign-language interfaces
+# Applications to pursue in labs
+# Lazy evaluation
+# Adding ... to function definitions
+
+
+# Compiling this document
+
+```{julia; eval=false}
+using Weave
+weave("spj.jmd", informat="markdown", out_path = :pwd, doctype = "pandoc")
+weave("spj.jmd", informat="markdown", out_path = :pwd, doctype = "md2html")
+weave("spj.jmd", informat="markdown", out_path = :pwd, doctype = "md2pdf")
+```
