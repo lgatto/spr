@@ -1,6 +1,6 @@
 % Reproducible research with Make and Sweave/knitr
 % Stephen Eglen
-% October 2016
+% October 2017
 
 # Organising code
 
@@ -253,7 +253,7 @@ And now we are back to \LaTeX ...
 
 -   Automatically creates filenames, e.g. `estimate-001.pdf`
 
--  This is one area where knitr is much more flexible than Sweae.
+-  This is one area where knitr is much more flexible than Sweave.
 
 Some text ...
 
@@ -280,7 +280,7 @@ library(xtable)
 data(tli)
 @ 
 
-<<label=tab1,echo=FALSE,results=tex>>=
+<<label=tab1,echo=FALSE,results='asis'>>=
      ## Demonstrate data.frame
      tli.table <- xtable(tli[1:20,])
      digits(tli.table)[c(2,6)] <- 0
