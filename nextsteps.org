@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \newcommand{\Robject}[1]{{\texttt{#1}}}
 #+LATEX_HEADER: \newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
 \makeatletter
 \def\DIfF^#1{%
   \mathop{\mathrm{\mathstrut \text{d}}}%
@@ -39,7 +39,7 @@
 
 \newcommand{\deriv}[3][]{% \deriv[<order>]{<func>}{<var>}
   \ensuremath{\frac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}}
-#+END_LaTeX
+#+END_EXPORT
 
 #+LATEX_HEADER: \usepackage[overlay,absolute]{textpos}
 # SJE: should not need to specify beamertheme, if taking default.
@@ -299,6 +299,18 @@ http://www.sabren.net/articles/againstperl.php3
   squareOne(10)
 #+end_src
 
+** Rcpp example two
+
+See following files: counting.cpp and counting.R
+
+\tiny
+#+INCLUDE: "counting.cpp" example
+
+** Rcpp example three
+\footnotesize
+#+INCLUDE: "counting.R" src r
+
+
 
 * Not only local
 
@@ -488,13 +500,14 @@ http://tolstoy.newcastle.edu.au/R/packages/10/0697.html
 
 \note{see text in nextsteps/ff-oct2010.txt}
 
-** Other
+** Other approaches to large files
 
 - The =bigmemory= package by Kane and Emerson permits storing large objects such as matrices in memory (as well as via files) and uses external pointer objects to refer to them.
 - netCDF data files: =ncdf= and =RNetCDF= packages.
 - hdf5 format: =rhdf5= package
 - =XML= package to parse xml data
-- ...
+- =Rhadoop= package for very large files.
+- https://rpubs.com/msundar/large_data_analysis
 
 
 * Parallel processing
@@ -670,7 +683,7 @@ i.e. use numerical integration, with $r_0 = 1$ and $s_0 = 1.2$
    - More slides about DE and phase plane -- \url{de.pdf}
 
 * Conclusions
-
+  
 ** Conclusions
 
 - Looking for packages
@@ -689,3 +702,5 @@ i.e. use numerical integration, with $r_0 = 1$ and $s_0 = 1.2$
 # #+latex: \url{http://www.edwardtufte.com/tufte/}
 # #+latex: \url{http://www.biostat.wisc.edu/~kbroman/topten_worstgraphs/}
 
+# How to compile
+# (org-beamer-export-to-pdf)
