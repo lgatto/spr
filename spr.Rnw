@@ -352,8 +352,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Foreign-language interface (C/Fortran) when speed crucial, or
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
-  \item Comprehensive \R Archive Network (CRAN) $\sim$ 9280 packages
-    [2016-10-04] (cf 1000 in April 2007).
+  \item Comprehensive \R Archive Network (CRAN) $\sim$ 11539 packages
+    [2017-10-03] (cf 1000 in April 2007).
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -429,7 +429,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     \begin{itemize}
     \item Emacs through ESS (\url{http://ess.r-project.org}),
     \item Eclipse IDE (\url{http://www.walware.de/goto/statet}),
-    \item Rstudio (\url{http://www.rstudio.org}),
+\item Rstudio (\url{http://www.rstudio.org}),
+\item Jupyter (https://irkernel.github.io/)
     \item \ldots
     \end{itemize}
   \end{itemize}
@@ -1851,7 +1852,9 @@ sum(sum)  ## can get confusing!
 
   There are several OO programming frameworks in \R. 
   The main ones, supported in base \R are \texttt{S3}, 
-  \texttt{S4} and \texttt{S4 ReferenceClasses}. \ds
+  \texttt{S4} and \texttt{S4 ReferenceClasses}. 
+  \texttt{S6} are lightweight reference classes.
+  \ds
   
   Bioconductor provides many ad hoc classes to store, 
   manipulate and process microarray, RNA Seq, proteomics, 
@@ -2001,8 +2004,7 @@ Here are some starting points to explore:
 \item \Rfunction{curve(x*log(x))}
 
 \item \R graphics gallery \\
-  \url{http://gallery.r-enthusiasts.com/}, 
-  \url{http://rgm2.lab.nig.ac.jp/RGM2/images.php}
+  \url{http://www.r-graph-gallery.com}
   
 \end{itemize}
 \end{frame}
@@ -3055,6 +3057,9 @@ See \textbf{An introduction to the Interactive Debugging Tools in \R,
   Roger D Peng} for detailed usage.
 \url{http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf}
 
+For a more modern approach
+\url{https://www.rstudio.com/products/rstudio/release-notes/debugging-with-rstudio/}
+
 \begin{itemize}
 
 \item warnings vs errors; converting warnings to errors; \Rfunction{stopifnot()}.
@@ -3218,7 +3223,7 @@ R CMD INSTALL mypackage.tar.gz  ## from shell
 @ 
 
 If asked to selected a CRAN mirror, in UK use:
-\url{http://www.stats.bris.ac.uk/R}. \ds
+\url{http://mirrors.ebi.ac.uk/CRAN/}. \ds
 
 For Bioconductor
 <<bioclist, eval=FALSE>>=
@@ -3240,7 +3245,7 @@ biocLite("Biobase")
 @   
 
 You can also set \R libraries as a global shell environment in 
-your \texttt{.bashrc} file (e.g. PWF linux)
+your \texttt{.bashrc} file (e.g. linux)
 \begin{verbatim}
 export R_LIBS=$HOME/NOBACKUP/RLIB
 \end{verbatim} 
@@ -3309,6 +3314,8 @@ vExplorer()
 @ 
 
   \item knitr is the natural successor to Sweave.  It rocks!
+
+  \item Jupyter documents also becoming more popular.
 
   \end{itemize}
 
