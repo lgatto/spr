@@ -293,7 +293,8 @@ building on core knowledge of \R.
       result interpret. \\
       Importance of documentation.
     \end{itemize}
-    See Gentleman et al. (2004) Genome Biology (Bioconductor paper) for an example of successful scientific software. 
+    See Gentleman et al. (2004) Genome Biology (Bioconductor paper XXX
+CITE) for an example of successful scientific software. 
   \end{block}
 \end{frame}
 
@@ -335,17 +336,17 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Robert Gentleman (NZ).
   \item 1993: first announcement.
   \item 1995: 0.60 release, now under GPL.
-  \item 2015-08-14: release 3.2.2.
+  \item 2018-07-02: release 3.5.1.  XXX
     Stable, multi-platform. Major release every April.
   \item R-core now 21 people, key academics in field, 
-    including John Chambers.
+    including John Chambers. XXX
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Strengths of \R}
   \begin{itemize}
-  \item GPL'd, available on many platforms.
+  \item Freely available (under GPL) on many platforms.
   \item Excellent development team with yearly release cycle.
   \item Source always available to examine/edit.
   \item Fast for vectorized calculations.
@@ -353,7 +354,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
   \item Comprehensive \R Archive Network (CRAN) $\sim$ 11539 packages
-    [2017-10-03] (cf 1000 in April 2007).
+    [2017-10-03] (cf 1000 in April 2007).  XXX
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -402,7 +403,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Use \Rfunction{x[i]} not \Rfunction{x(i)} for indexing vectors.
     
   \item Making vectors: \Rfunction{x <- c(10, 9, 5, 1)}
-  \item Assignment: best to use \Rfunction{<-} rather than \Rfunction{=}.
+  \item Assignment: advised to use \Rfunction{<-} rather than \Rfunction{=}.
     %% Stay away from underscore!
   \end{itemize}
 
@@ -486,7 +487,7 @@ q()
   Name of an object: letters (upper/lower case are distinct), digits,
   period.  Start with a letter.
 
-  Objects set by way of assignement.  Use the \Rfunction{<-} assignment operator
+  Objects set by way of assignment.  Use the \Rfunction{<-} assignment operator
   rather than \Rfunction{=} wherever possible.  
   (Does \Rfunction{i = i+1} make sense?)
 \end{frame}
@@ -1633,7 +1634,7 @@ as.list(d)
 
 \begin{frame}[fragile]
   \frametitle{Factors \adv}
-  (Mostly seen when reading in data frames)
+  (Mostly seen when reading in data frames XXX)
 
   Factors internally code categorical variables with a number.  e.g.
   \texttt{1=Sunday}, \texttt{2=Monday}, \ldots \texttt{7=Saturday}.  
@@ -1642,6 +1643,8 @@ as.list(d)
   
   Also useful in many statistical functions, using the formula interface.
 \end{frame}
+
+% XXX show example of memory savings...
 
 \begin{frame}[fragile]
   \frametitle{Factors \adv}
@@ -1980,6 +1983,7 @@ Zoom in on text of PNG to see limitations of this format.
   \item base graphics (or ``traditional'')
   \item \Rpackage{lattice}/\Rpackage{grid}  (lattice is built upon grid)
   \item \Rpackage{ggplot2} -- \url{http://had.co.nz/ggplot2/}
+  \item XXX patchwork slide...
   \end{itemize}
 \end{frame}
 
@@ -2165,6 +2169,7 @@ load('all.Rda')                ## reload objects
   \item ?sink --- divert \R output to a connectin    
   \item ?dget / ?dput --- read/write ASCII representation of an \R
     object.
+  \item XXX Package readxl for reading Excel files.
   \end{itemize}
   \ds
   Also: XML, DBMS, SQLite, netCDF, hdf5, \ldots  
@@ -2441,6 +2446,7 @@ however is the vectorized form \\
 \Robject{y <- ifelse(x<10, 40, 20)}
 \end{frame}
 
+
 \begin{frame}[fragile]
   \frametitle{Braces in conditional constructs}
 
@@ -2650,6 +2656,10 @@ for (i in 1:10) {
 
 \end{frame}
 
+\begin{frame}
+  \frametitle{Example: HOTPO rule XXX}
+\end{frame}
+
 
 \begin{frame}[fragile]
   \frametitle{A word on indentation}
@@ -2788,8 +2798,9 @@ FUN = function to apply
 
 <<applyexple>>=
 A <- matrix(1:6, 2,3)
-row.means <- apply(A, 1, mean) ## or rowMeans 
+sum(A)                                    #sum of entire array
 col.sums  <- apply(A, 2, sum, na.rm=TRUE) ## colSums
+row.means <- apply(A, 1, mean) ## or rowMeans 
 @ 
 
 \end{frame}
@@ -3223,7 +3234,7 @@ R CMD INSTALL mypackage.tar.gz  ## from shell
 @ 
 
 If asked to selected a CRAN mirror, in UK use:
-\url{http://mirrors.ebi.ac.uk/CRAN/}. \ds
+\url{http://mirrors.ebi.ac.uk/CRAN/}. \ds % XXX this is now dead.
 
 For Bioconductor
 <<bioclist, eval=FALSE>>=
@@ -3297,29 +3308,29 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Reproducible research: Sweave, knitr and vignettes}
+% \begin{frame}[fragile]
+%   \frametitle{Reproducible research: Sweave, knitr and vignettes}
 
-  \begin{itemize}
-  \item Use one file to store code and document.  Best shown by way of
-    example... \url{estimate.Rnw}\ds
+%   \begin{itemize}
+%   \item Use one file to store code and document.  Best shown by way of
+%     example... \url{estimate.Rnw}\ds
 
-  \item Vignettes often used in Bioconductor to document packages.\ds
+%   \item Vignettes often used in Bioconductor to document packages.\ds
     
-  \item Interactively explore vignettes.    
+%   \item Interactively explore vignettes.    
 
-<<vexpl, tidy=TRUE, eval=FALSE>>=
-library("tkWidgets")
-vExplorer()
-@ 
+% <<vexpl, tidy=TRUE, eval=FALSE>>=
+% library("tkWidgets")
+% vExplorer()
+% @ 
 
-  \item knitr is the natural successor to Sweave.  It rocks!
+%   \item knitr is the natural successor to Sweave.  It rocks!
 
-  \item Jupyter documents also becoming more popular.
+%   \item Jupyter documents also becoming more popular.
 
-  \end{itemize}
+%   \end{itemize}
 
-\end{frame}
+% \end{frame}
 
 \end{document}
 
