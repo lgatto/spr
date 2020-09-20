@@ -293,8 +293,7 @@ building on core knowledge of \R.
       result interpret. \\
       Importance of documentation.
     \end{itemize}
-    See Gentleman et al. (2004) Genome Biology (Bioconductor paper XXX
-CITE) for an example of successful scientific software. 
+    See Gentleman et al. \url{http://genomebiology.com/2004/5/10/R80} for an example of successful scientific software.
   \end{block}
 \end{frame}
 
@@ -336,10 +335,9 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Robert Gentleman (NZ).
   \item 1993: first announcement.
   \item 1995: 0.60 release, now under GPL.
-  \item 2018-07-02: release 3.5.1.  XXX
-    Stable, multi-platform. Major release every April.
-  \item R-core now 21 people, key academics in field, 
-    including John Chambers. XXX
+  \item 2020-09-18: release 4.0.2.  Stable, multi-platform. Major release every April.
+  \item R-core now 20 people, key researchers in field, including John Chambers. 
+    \url{https://www.r-project.org/contributors.html}
   \end{itemize}
 \end{frame}
 
@@ -353,8 +351,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Foreign-language interface (C/Fortran) when speed crucial, or
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
-  \item Comprehensive \R Archive Network (CRAN) $\sim$ 11539 packages
-    [2017-10-03] (cf 1000 in April 2007).  XXX
+  \item Comprehensive \R Archive Network (CRAN) $\sim$ 16,332 packages
+    [2020-09-18] (cf 1000 in April 2007).  XXX
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -1634,8 +1632,14 @@ as.list(d)
 
 \begin{frame}[fragile]
   \frametitle{Factors \adv}
-  (Mostly seen when reading in data frames XXX)
+  (Mostly seen when reading in data frames; abandoned in R 4.0.0)
 
+
+  ``... in 2019, it was decided to move towards using stringsAsFactors
+  = FALSE by default, ideally starting with the 4.0.0 release.''
+  \url{https://developer.r-project.org/Blog/public/2020/02/16/stringsasfactors/}
+
+  
   Factors internally code categorical variables with a number.  e.g.
   \texttt{1=Sunday}, \texttt{2=Monday}, \ldots \texttt{7=Saturday}.  
   For large vectors, this is more efficient storage, especially when character strings repeat.
@@ -1643,8 +1647,6 @@ as.list(d)
   
   Also useful in many statistical functions, using the formula interface.
 \end{frame}
-
-% XXX show example of memory savings...
 
 \begin{frame}[fragile]
   \frametitle{Factors \adv}
@@ -1995,6 +1997,20 @@ Zoom in on text of PNG to see limitations of this format.
 \end{frame}
 
 
+\begin{frame}[fragile]
+
+<<patchwork,message=FALSE,fig.height=3>>=
+require(ggplot2); require(patchwork)
+p1 <- ggplot(mtcars) + geom_point(aes(mpg, disp))
+p2 <- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))
+p3 <- ggplot(mtcars) + geom_smooth(aes(disp, qsec))
+p4 <- ggplot(mtcars) + geom_bar(aes(carb))
+(p1 | p2 | p3) /
+      p4
+@
+
+\end{frame}
+
 \begin{frame}
 Here are some starting points to explore:
 
@@ -2169,7 +2185,7 @@ load('all.Rda')                ## reload objects
   \item ?sink --- divert \R output to a connectin    
   \item ?dget / ?dput --- read/write ASCII representation of an \R
     object.
-  \item XXX Package readxl for reading Excel files.
+  \item Package readxl for reading Excel files.
   \end{itemize}
   \ds
   Also: XML, DBMS, SQLite, netCDF, hdf5, \ldots  
@@ -2480,6 +2496,7 @@ if ( x > 10 ) {
 }
 @ 
 \colhalf
+%% This chunk will generate a warning in the highlighter.
 <<if4, eval=FALSE, prompt=FALSE>>=
 if ( x > 10 )
   y <- 1
@@ -2657,7 +2674,9 @@ for (i in 1:10) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{Example: HOTPO rule XXX}
+  \frametitle{Case-study: HOTPO rule}
+
+  TODO
 \end{frame}
 
 
@@ -3230,8 +3249,10 @@ detach("package:cluster") ## remove pkg.
 
 <<install, eval=FALSE, prompt=FALSE>>=
 install.packages(c("splancs", "sp"))  
-R CMD INSTALL mypackage.tar.gz  ## from shell
-@ 
+@
+
+Or, from the shell, you can do: \verb+R CMD INSTALL mypackage.tar.gz+.
+
 
 If asked to selected a CRAN mirror, in UK use:
 \url{http://mirrors.ebi.ac.uk/CRAN/}. \ds % XXX this is now dead.
