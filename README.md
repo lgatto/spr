@@ -4,3 +4,17 @@ See the [TeachingMaterial](https://github.com/lgatto/TeachingMaterial) repositor
 
 This material is licensed under the 
 [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/). 
+
+
+
+## Compiling under windows
+
+- Install msys2 and update it.
+- Install R, Rstudio through normal route
+
+- To get Rstudio ready:
+
+```
+install.packages("tinytex", "ggplot2", "knitr", "patchwork")
+tinytex::install_tinytex()
+```
