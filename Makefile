@@ -6,6 +6,10 @@ endif
 
 all: spr spr-4up.pdf fib fibonacci-4up.pdf spr.R fib.R rr
 
+
+spr.pdf: spr.Rnw
+	Rscript -e "knitr::knit2pdf('spr.Rnw')"
+
 spr:
 	"$(R_HOME)/bin/R" --vanilla -e "library(knitr); knit2pdf('spr.Rnw');"
 	pdflatex spr.tex
@@ -15,7 +19,7 @@ fib:
 	pdflatex fibonacci.tex
 
 %-4up.pdf: %.pdf
-	pdfnup -q --nup 2x2 --suffix '4up' $<
+	pdfjam -q --nup 2x2 --suffix '4up' $<
 
 spr.R:
 	R --vanilla -e 'Stangle("spr.Rnw")'
@@ -28,8 +32,10 @@ clean:
 	rm -f */*~
 	rm -f rr.tex
 	rm -rf figure cache
-	rm -rf hist.pdf hist.png
-	rm -rf spr.tex rr.tex fibonacci.tex
+	rm -f hist.pdf hist.png
+	rm -f spr.tex rr.tex fibonacci.tex
+	rm -f spr.pdf
+
 
 rr.pdf: rr.md
 	pandoc -r markdown+simple_tables -t beamer --slide-level=2 --standalone -H rr-preamble.tex rr.md -o rr.pdf
@@ -37,3 +43,5 @@ rr.pdf: rr.md
 rr.tex: rr.md
 	pandoc -r markdown+simple_tables -t beamer --slide-level=2 --standalone -H rr-preamble.tex rr.md -o rr.tex
 
+from-R-to-julia.html: from-R-to-julia.Rmd test.jl
+	Rscript -e "rmarkdown::render('from-R-to-julia.Rmd')"
