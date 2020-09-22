@@ -352,7 +352,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
   \item Comprehensive \R Archive Network (CRAN) $\sim$ 16,332 packages
-    [2020-09-18] (cf 1000 in April 2007).  XXX
+    [2020-09-18] (cf 1000 in April 2007).
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -1985,7 +1985,7 @@ Zoom in on text of PNG to see limitations of this format.
   \item base graphics (or ``traditional'')
   \item \Rpackage{lattice}/\Rpackage{grid}  (lattice is built upon grid)
   \item \Rpackage{ggplot2} -- \url{http://had.co.nz/ggplot2/}
-  \item XXX patchwork slide...
+  \item Patchwork
   \end{itemize}
 \end{frame}
 
@@ -2674,9 +2674,8 @@ for (i in 1:10) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{Case-study: HOTPO rule}
-
-  TODO
+  \frametitle{Example: HOTPO rule}
+  
 \end{frame}
 
 
@@ -3255,7 +3254,7 @@ Or, from the shell, you can do: \verb+R CMD INSTALL mypackage.tar.gz+.
 
 
 If asked to selected a CRAN mirror, in UK use:
-\url{http://mirrors.ebi.ac.uk/CRAN/}. \ds % XXX this is now dead.
+\url{https://www.stats.bris.ac.uk/R}. \ds
 
 For Bioconductor
 <<bioclist, eval=FALSE>>=
