@@ -8,7 +8,7 @@ This material is licensed under the
 
 ## 2020 material
 
-Material for 2020 is in the [2020 folder](2020/README.md).
+Material for 2020 is in the [2020 folder](2020/).
 
 
 ## Compiling under windows
