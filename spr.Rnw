@@ -1554,11 +1554,11 @@ empty[["height"]] <- 1.8
   Initialising \R object (list, vectors, \ldots) is \textbf{much} 
   faster than creating and extending these objects on the fly
 <<init, cache=TRUE>>=
-n <- 1e4
+n <- 1e6
 l <- list()
-system.time(for (i in 1:n) l[[i]] <- rnorm(1e3) )
+system.time(for (i in 1:n) l[[i]] <- 1) 
 l <- vector("list", n)
-system.time(for (i in 1:n) l[[i]] <- rnorm(1e3) )
+system.time(for (i in 1:n) l[[i]] <- 1) 
 @ 
 
 \end{frame}
