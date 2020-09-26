@@ -1850,6 +1850,29 @@ sum(sum)  ## can get confusing!
 @
 \end{frame}
 
+
+
+\begin{frame}[fragile]
+  \frametitle{Where is my object?}
+  <<eval=FALSE>>=
+  ## R has a path list for finding objects.
+  search()
+  sum=12
+  find('sum')
+  
+  find('sum', mode='numeric')
+
+  find('sum', mode='function')
+
+  ## To be clear about which function:
+  base::sum(c(3,4))
+  sum(c(3,4))
+  ## R is a lisp1 (as is scheme) with one space
+  ## common-lisp is a lisp-2, with one space for functions.
+  @
+\end{frame}
+
+
 \begin{frame}
   \frametitle{OO programming in \R}
   Data abstraction; object manipluation becomes independent of 
@@ -2829,11 +2852,13 @@ row.means <- apply(A, 1, mean) ## or rowMeans
   Other functions: \Rfunction{lapply} (apply to list), \Rfunction{sapply} (simplify), \Rfunction{replicate}, \ldots
   
 <<moreapply, eval = FALSE>>=
-lapply(ls(), object.size)
-sapply(ls(), object.size)
-tapply(1:20, factor(rep(letters[1:5], each = 4)), sum) 
-## see also ?by
-mapply(sum, 1:5, 1:5, 1:5)
+sapply(ls(), function(x) object.size(get(x))) 
+lapply(ls(), function(x) object.size(get(x)) )
+score   <- c( 90,  30,  20,  70,  10,  40)
+student <- c("a", "b", "b", "a", "b", "a")
+data.frame(scores, student)
+tapply(scores, factor(student), sum)
+mapply(sum, c(2,9), c(3,4), c(1, 5))
 hist( replicate(200, mean(rnorm(100)) ))
 @
 
@@ -2899,7 +2924,7 @@ expression \ri{a+b+c}.
 \colhalf
 <<f1opt, size='scriptsize'>>=
 f1 <- function() {
-  n <- 1e4; decay <- 0.9995
+  n <- 1e5; decay <- 0.9995
 
   out <- 1.0
   for (i in 2:n)
@@ -2911,7 +2936,7 @@ system.time(o1 <- f1())
 \colhalf
 <<f2opt, size='scriptsize'>>=
 f2 <- function() {
-  n <- 1e4; decay <- 0.99995
+  n <- 1e5; decay <- 0.9995
   out <- rep(0, n)   ##pre-alloc
   out[1] <- 1.0
   for (i in 2:n)
@@ -3067,7 +3092,7 @@ eps ##1.110223e-16
 
   \textbf{Exercise}: write a random number generator.  See: ``Randu: a
   bad random number generator''.
-  \url{http://physics.ucsc.edu/~peter/115/randu.pdf}
+  \url{http://physics.ucsc.edu/~peter/115/randu.PDF}
 
 
   \textbf{Exercise}: Apply the central limit theorem to generate samples from a
