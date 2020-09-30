@@ -3092,8 +3092,8 @@ eps ##1.110223e-16
 
   \textbf{Exercise}: write a random number generator.  See: ``Randu: a
   bad random number generator''.
-  \url{http://physics.ucsc.edu/~peter/115/randu.PDF}
-
+  \url{https://www.johndcook.com/blog/2019/04/14/randu/} with code at
+  \url{https://gist.github.com/csgillespie/0ba4bbd8da0d1264b124}.
 
   \textbf{Exercise}: Apply the central limit theorem to generate samples from a
   normal distribution by adding together samples from a uniform
@@ -3101,6 +3101,24 @@ eps ##1.110223e-16
 
 \end{frame}
 
+
+%% https://en.wikipedia.org/wiki/Lehmer_random_number_generator
+
+\begin{frame}[fragile]
+  <<R>>=
+## Old-school RNG (ZX81)
+my.rng <- function(x) { (75 * x) %% 65537}
+x0 <- 100  ## seed
+n <- 50
+x <- rep(0, n)
+for (i in 1:n) { x0 <- x[i] <- my.rng(x0) }
+print(x[1:8])
+## stick to base R
+runif(1)
+set.seed(100); runif(1)
+@ 
+  
+\end{frame}
 
 \section{Debugging}
 
@@ -3353,6 +3371,14 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
   \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{Blank slide}
+
+  Intentionally left blank to increment slide count.
+\end{frame}
+
+
 % \begin{frame}[fragile]
 %   \frametitle{Reproducible research: Sweave, knitr and vignettes}
 
@@ -3376,6 +3402,11 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
 %   \end{itemize}
 
 % \end{frame}
+
+
+
+
+
 
 \end{document}
 
@@ -3489,6 +3520,8 @@ Key points:
 \begin{frame}
   \frametitle{Adding ... to function definitions}
 \end{frame}
+
+
 
 \end{document}
 
