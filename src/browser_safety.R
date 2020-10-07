@@ -22,4 +22,3 @@ find.high(x, 0.7)
 x <- rnorm(1000)
 (1- pnorm(0.7)) * length(x) ## expected.
 find.high(x, 0.7)
-
