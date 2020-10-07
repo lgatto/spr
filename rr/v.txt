@@ -1,0 +1,10 @@
+We can then test the procedure a few
+times, using the default number 
+of darts, 1000:
+
+<<>>=
+replicate(9, estimate.pi())
+@ 
+
+... back to latex here.
+
