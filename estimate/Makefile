@@ -6,7 +6,7 @@ R_HOME= $(shell R RHOME)
 endif
 
 
-estimatek:
+estimatek.pdf: estimatek.Rnw
 	"$(R_HOME)/bin/R" --vanilla -e "library(knitr); knit2pdf('estimatek.Rnw');"
 
 
@@ -19,6 +19,8 @@ clean:
 	rm -f estimate.tex estimatek.tex
 	rm -f estimate-0*pdf
 	rm -rf figure
+	rm -f estimatek.pdf
+
 
 allclean: clean
 	rm -f estimate.pdf estimatek.pdf
