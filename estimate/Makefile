@@ -1,27 +1,12 @@
-all: estimatek estimate clean
-
-setvars:
-ifeq (${R_HOME},)
-R_HOME= $(shell R RHOME)
-endif
-
+all: estimatek.pdf clean
 
 estimatek.pdf: estimatek.Rnw
-	"$(R_HOME)/bin/R" --vanilla -e "library(knitr); knit2pdf('estimatek.Rnw');"
-
-
-estimate:
-	"$(R_HOME)/bin/R" CMD Sweave estimate.Rnw
-	pdflatex estimate.tex
+	Rscript -e 'knitr::knit2pdf("estimatek.Rnw")'
 
 clean:
-	rm -f *.dvi *.aux *.log *.nav *.out *.snm *.toc *~ *vrb 
-	rm -f estimate.tex estimatek.tex
-	rm -f estimate-0*pdf
-	rm -rf figure
 	rm -f estimatek.pdf
+	rm -rf figure
 
 
-allclean: clean
-	rm -f estimate.pdf estimatek.pdf
+
 
