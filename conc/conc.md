@@ -2,7 +2,6 @@
 title: "Conclusions for SPR 2020"
 author: "Stephen J Eglen"
 urlcolor: blue
-mainfont: "sourcecodepro"
 section-titles: false
 toc: true
 ---
@@ -31,6 +30,8 @@ Spectrum of solutions:
 <https://lgatto.github.io/github-intro/>
 
 <https://github.com>
+
+Get the educational pack via <https://education.github.com>.
 
 
 # Notebooks and mybinder
