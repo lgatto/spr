@@ -26,7 +26,7 @@ Spectrum of solutions:
 
 **Git**: Version control for those with an IQ of over 200.
 
-<https://gitconnected.com/learn/git/learn-git-in-15-mins-from-github-55b48b>
+<https://lab.github.com/>
 
 <https://lgatto.github.io/github-intro/>
 
@@ -41,9 +41,10 @@ e.g. <https://mybinder.org/v2/gh/sje30/neuRo/master?urlpath=rstudio>
 
 See: <https://github.com/sje30/neuRo>
 
-but it also runs [notebooks](jupyter.org), e.g. [Jupyter with R](https://mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
+but it also runs [notebooks](https://jupyter.org), 
+e.g. [Jupyter with R](https://mybinder.org/v2/gh/binder-examples/r/master?filepath=index.ipynb)
 
-Other solutions exist including [colab](https://colab.research.google.com) and [pluto.jl(https://github.com/fonsp/Pluto.jl)
+Other solutions exist including [colab](https://colab.research.google.com) and [pluto.jl](https://github.com/fonsp/Pluto.jl).
 
 
 # Writing your own packages
@@ -62,7 +63,7 @@ Hadley Wickham's important contributions to R...
 
 The "tidyverse" approach
 
-ggplot2 <https://devtools.r-lib.org/>>
+ggplot2 <https://ggplot2.tidyverse.org/>
 
 devtools <https://devtools.r-lib.org/>
 
