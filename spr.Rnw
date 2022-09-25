@@ -2687,7 +2687,7 @@ repeat {
   \Rfunction{next} and \Rfunction{break} can be used within other loops 
   (\Rfunction{while}, \Rfunction{for}).  
 <<xnext, eval=TRUE>>=
-for (i in 1:10) {
+for (i in 1:10) { 
   if ((i %% 2) == 0) 
     next
   print(i)
@@ -2714,7 +2714,7 @@ for (i in 1:10) {
 <<ind1, tidy=FALSE, eval=FALSE, prompt=FALSE>>=
 ## version 1.
 i <- 3
-repeat { 
+repeat {
   if (i==10) {
     break
   } else {
