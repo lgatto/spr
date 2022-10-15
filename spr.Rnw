@@ -1132,7 +1132,7 @@ file, and then ask \R to run (\Rfunction{source}) those commands.
     shows the time taken to run the script.
 
   \item Any output is not shown on the screen but sent to a PDF
-     called \url{Rplots.pdf}.
+     called \url{Rplots.pdf} (only on linux, not mac).
 
   \item This is a GREAT way of testing your scripts, since \R starts
     with an empty workspace, you will see if you have all the steps
