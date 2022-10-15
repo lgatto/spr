@@ -335,7 +335,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Robert Gentleman (NZ).
   \item 1993: first announcement.
   \item 1995: 0.60 release, now under GPL.
-  \item 2020-09-18: release 4.0.2.  Stable, multi-platform. Major release every April.
+  \item 2022-09-18: release 4.2.1.  Stable, multi-platform. Major release every April.
   \item R-core now 20 people, key researchers in field, including John Chambers. 
     \url{https://www.r-project.org/contributors.html}
   \end{itemize}
@@ -351,8 +351,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Foreign-language interface (C/Fortran) when speed crucial, or
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
-  \item Comprehensive \R Archive Network (CRAN) $\sim$ 16,332 packages
-    [2020-09-18] (cf 1000 in April 2007).
+  \item Comprehensive \R Archive Network (CRAN) $\sim$ 18,701 packages
+    [2022-09-25] (cf 1000 in April 2007).
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -376,12 +376,9 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Loops are slow.  Learn how to vectorize solutions. %%  or use apply family of functions.
   \item No fast compiler yet, and unlikely to happen due to nature of
     language.  Byte compiler available in \textbf{compiler} package.
-  \item No (decent) endorsed GUI built-in to \R. 
-    Tk is available within base \R, and packages for other 
-    graphical tooklits (e.g. Gtk2, Qt) are also
-    available. \\
-    ``Programming Graphical User Interfaces with \R'', 
-    M. F. Lawrence and J. Verzani
+  \item No (decent) endorsed GUI built-in to \R.  Closest and probably
+    most used is Shiny \url{https://shiny.rstudio.com}.
+
   \end{itemize}
 \end{frame}
 
@@ -492,7 +489,7 @@ q()
 
 \begin{frame}[fragile]
   \frametitle{Objects and Functions}
-<<bjectsandfunctions>>=
+<<objectsandfunctions>>=
 x <- 200
 half.x <- x/2
 threshold <- 95.0
