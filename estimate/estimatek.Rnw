@@ -69,7 +69,7 @@ and estimatek.pdf are available from:
 
 \url{https://github.com/lgatto/spr/tree/master/estimate}
 
-(you will need \url{estimate.Rnw} and \url{diff.R})
+(you will need \url{estimatek.Rnw} and \url{diff.R})
 
 One key difference between Sweave and knitr is that knitr has built-in
 support for caching.  By default it is turned off in this document,
