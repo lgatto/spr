@@ -1,29 +1,33 @@
 ---
-title: "Example knitr document: estimating π"
+title: "Example Rmarkdown document: estimating π"
 author: Stephen J Eglen
-output: 
-  html_document:
+bibliography: refs.bib
+output:
+  bookdown::html_document2: default
+  bookdown::pdf_document2:
+    keep_tex: true
+  bookdown::word_document2:
     toc: true
-    toc_float: true
 ---
 
 
 ## Disclaimer
 
-Not everything is yet working (October 2016) in this document,
-compared to the Rnw version.  The bookdown package might be more
-useful for generating cross-references to figure and table captions.
-Compared to LaTeX, I think there is less flexibility for writing
-papers/reports, but for simple documents, the Rmd approach may be
-quicker to write and sufficient for your needs.
+Not everything is yet working (October 2022) in this document,
+compared to the Rnw version.  Compared to LaTeX, I think there is less
+flexibility for writing papers/reports, but for simple documents, the
+Rmd approach may be quicker to write and sufficient for your needs.
+Bookdown is a system for writing books, but can also be used for
+writing reports, as is done here.
+
 
 # Introduction
 
-This is an example document created using the knitr system
-http://yihui.name/knitr/.  knitr is a tool for combining both
+This is an example document created using the rmarkdown/bookdown system
+<https://bookdown.org/>.  Rmarkdown is a tool for combining both
 documentation and R code within the same file, similar to Sweave.  For
 this document, the master file is `estimatek.Rmd`.  This is processed
-by knitr in R, which runs the R code to generate textual/graphical
+by rmarkdown in R, which runs the R code to generate textual/graphical
 output, and also creates a HTML document.  On recent machines, once
 rmarkdown and kntir are installed, you should be able to generate the
 pdf using:
@@ -35,21 +39,19 @@ render('estimatek.Rnw')
 
 Within RStudio, there is a handy "Knit HTML"  button.
 
-knitr is newer than Sweave, and is more flexible.  Both estimatek.Rmd
-and estimatek.html are available from:
+Both estimatek.Rmd and estimatek.html are available from:
 https://github.com/lgatto/spr/tree/master/estimate (you will need
 `estimatek.Rmd` and `diff.R`)
 
-One key difference between Sweave and knitr is that knitr has built-in
-support for caching.  By default it is turned off in this document,
-but change FALSE to TRUE in the following code-chunk and see if you
-can work out what happens:
+Knitr and rmarkdown have built in support for caching.  By default it is
+turned off in this document, but change FALSE to TRUE in the following
+code-chunk and see if you can work out what happens:
 
 ```{r setup}
-require(knitr)
 require(xtable)
 require(printr)
-opts_chunk$set(cache=FALSE)      # $ (dollar needed by Emacs.)
+require(knitr) ## for kable
+knitr::opts_chunk$set(cache=FALSE)
 ```
 
 #  Task: estimate the value of $\pi$
@@ -64,11 +66,12 @@ the ratio $d/n$ should approximate the ratio of the area of the
 dartboard to the enclosing square, $\pi r^2 / 4 r^2 \equiv \pi/4$.
 From this, we can estimate $\pi \approx 4d/n$.
 
-We start with an example, using R to draw both the dartboard and the
-surrounding square, together with `n=50` darts.  The radius of the
-dartboard here is 1 unit, although the value is not important.
+We start with an example, see Figure \@ref(fig:dartboard), using R to
+draw both the dartboard and the surrounding square, together with
+`n=50` darts.  The radius of the dartboard here is 1 unit, although
+the value is not important.
 
-```{r}
+```{r dartboard, fig.cap='The dartboard method for estimating PI.'}
 r <- 1
 n <- 50
 par(las=1)
@@ -114,11 +117,11 @@ replicate(9, estimate.pi())
 ```
 Finally, for a given value of $n$, we can show 99 estimates of $\pi$,
 as clearly the estimate will vary from run to run.  In
-Figure~\ref{fig:n}, we compare the estimates of $\pi$ for three
+Figure \@ref(fig:n), we compare the estimates of $\pi$ for three
 different values of $n$.
 
 
-```{r}
+```{r n, fig.cap='Estimates of Pi as we increase number of darts' }
 ns <- 10^c(2,3,4)
 res <- lapply(ns, function(n) replicate(99, estimate.pi(n)))
 par(las=1, bty='n')
@@ -147,11 +150,13 @@ df = data.frame(name=c("joe", "ann", "bob"),
 df
 ```
 
-Or you can add a caption:
-<!-- Table~\ref{tab:example}. -->
+Or you can add a caption, see Table \@ref(tab:kable) below.
 
-```{r}
-kable(df, caption="Example output from xtable.",label="tab:example")
+
+
+
+```{r kable}
+kable(df, caption="Example output from kable")
 ```
 
 
@@ -159,20 +164,42 @@ kable(df, caption="Example output from xtable.",label="tab:example")
 
 Finally, an example listing.  We read in all the code from a given
 file (here diff.R) and then assign it to the ``all'' label which we
-then include without evaluation:
+then include without evaluation, or showing it.  We then can show the
+code in the Appendix of this document.  You could use this as a way of
+putting your code in an appendix, but using it in the main part of the
+document.
 
-```{r external-code,chunk=FALSE,include=FALSE}
+
+```{r external-code,chunk=FALSE,include=FALSE,results='hide'}
 read_chunk('diff.R',labels='all')
 ```
 
-```{r all,eval=FALSE}
+```{r all,echo=FALSE,results='hide'}
 ```
+
+```{r}
+x <- c(5.9, 10.2, 12.4, 18.8)
+all.equal(diff1(x), diff2(x))
+```
+
 
 See http://yihui.name/knitr/demo/externalization/ for further
 information.
+
+# References
+
+References can be included from your bib file: [@R-base]  [@Xie2016-he].
 
 ## Compiling this document
 
 ```{r eval=FALSE}
 rmarkdown::render('estimatek.Rmd')
 ```
+
+# Appendix
+
+```{r all,eval=FALSE}
+```
+
+# References
+
