@@ -1,6 +1,6 @@
 # Rnw version
 
-Rnw makes pdf
+[estimatek.Rnw](estimatek.Rnw) makes [estimatek.pdf](estimatek.pdf).
 
 # Rmarkdown version
 
