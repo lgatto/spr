@@ -1,5 +1,5 @@
 ---
-title: "Example Rmarkdown document: estimating π"
+title: "Example Rmarkdown document: estimating pi"
 author: Stephen J Eglen
 bibliography: refs.bib
 output:
@@ -71,7 +71,7 @@ draw both the dartboard and the surrounding square, together with
 `n=50` darts.  The radius of the dartboard here is 1 unit, although
 the value is not important.
 
-```{r dartboard, fig.cap='The dartboard method for estimating PI.'}
+```{r dartboard, fig.cap='The dartboard method for estimating pi.'}
 r <- 1
 n <- 50
 par(las=1)
