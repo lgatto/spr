@@ -213,8 +213,7 @@ read_chunk('src/src.R')
   \begin{itemize}
     
   \item Introductory Statistics with \R  (Springer, Dalgaard).
-  \item A first course in statistical programming with \R (CUP, Braun
-    and Murdoch).
+  \item A first course in statistical programming with \R (CUP Braun \& Murdoch).
   \item  Computational Genome Analysis: An Introduction (Springer,
     Deonier, Tavar{\'e} and Waterman).
   \item \Slang programming  (Springer, Venables and Ripley).
@@ -223,7 +222,7 @@ read_chunk('src/src.R')
     Maillardet and Robinson).
   \item The art of R programming (No Starch Press, Matloff).
   \item Writing Scientific Software (WSS) (CUP, Oliveira and Stewart).
-    
+  \item R for Data Science (Wickham et al; \url{https://r4ds.hadley.nz/})
   \item \url{www.r-project.org}, \url{www.rseek.org}, \url{www.r-bloggers.com}
   \item \R-help mailing list.
     \ds
@@ -262,6 +261,7 @@ In part 2 of the course\footnote{tentative}, we will explore various other topic
 building on core knowledge of \R.
 
 \begin{itemize}
+\item Julia (4 lectures)
 \item Numerical integration
 \item Phase plane analysis
 \item Handling large files/data bases
@@ -293,7 +293,7 @@ building on core knowledge of \R.
       result interpret. \\
       Importance of documentation.
     \end{itemize}
-    See Gentleman et al. \url{http://genomebiology.com/2004/5/10/R80} for an example of successful scientific software.
+    See Gentleman et al. \url{https://doi.org/10.1186/gb-2004-5-10-r80} for an example of successful scientific software.
   \end{block}
 \end{frame}
 
@@ -351,8 +351,8 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Foreign-language interface (C/Fortran) when speed crucial, or
     for interfacing with existing code.
   \item Good collection of numerical/statistical routines.
-  \item Comprehensive \R Archive Network (CRAN) $\sim$ 18,701 packages
-    [2022-09-25] (cf 1000 in April 2007).
+  \item Comprehensive \R Archive Network (CRAN) $\sim$ 19,932 packages
+    [2023-09-29] (cf 1000 in April 2007).
     %% Number of packages listed near top of
     %% http://cran.r-project.org/web/packages/
   \item On-line doc, with examples.
@@ -366,7 +366,9 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \frametitle{Graphics example}
   \centerline{\includegraphics[width=11cm]{figures/gpQuality_jean}}
   
-  {\small Jean YH Yang; gpQuality \url{http://bioinf.wehi.edu.au/marray/ibc2004/lect1b-quality.pdf}}
+  {\small Jean YH Yang; gpQuality
+    \url{http://bioinf.wehi.edu.au/marray/ibc2004/lect1b-quality.pdf}}
+  %% link broken
 \end{frame}
 
 
@@ -377,7 +379,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item No fast compiler yet, and unlikely to happen due to nature of
     language.  Byte compiler available in \textbf{compiler} package.
   \item No (decent) endorsed GUI built-in to \R.  Closest and probably
-    most used is Shiny \url{https://shiny.rstudio.com}.
+    most used is Shiny \url{https://shiny.posit.co/}.
 
   \end{itemize}
 \end{frame}
@@ -394,7 +396,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     \url{http://cran.r-project.org/doc/contrib/R-and-octave.txt}
 
     \item Comprehensive matlab and \R guide:
-      \url{http://www.math.umaine.edu/faculty/hiebeler/comp/matlabR.html}
+      \url{https://umaine.edu/mathematics/david-hiebeler/computing-software/matlab-r-reference/}
   \item Use \Rfunction{x[i]} not \Rfunction{x(i)} for indexing vectors.
     
   \item Making vectors: \Rfunction{x <- c(10, 9, 5, 1)}
@@ -423,10 +425,10 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \item Many external editors have support for \R, 
     including 
     \begin{itemize}
+    \item VSCode  (\url{https://code.visualstudio.com/docs/languages/r})
+    \item Rstudio (\url{https://posit.co/products/open-source/rstudio/}),
+    \item Jupyter (\url{https://irkernel.github.io/})
     \item Emacs through ESS (\url{http://ess.r-project.org}),
-    \item Eclipse IDE (\url{http://www.walware.de/goto/statet}),
-\item Rstudio (\url{http://www.rstudio.org}),
-\item Jupyter (https://irkernel.github.io/)
     \item \ldots
     \end{itemize}
   \end{itemize}
@@ -1091,7 +1093,7 @@ file, and then ask \R to run (\Rfunction{source}) those commands.
     ``My Documents''.  You may need to change directory (\Rfunction{setwd}) first.
 
   \item Use a good editor that helps you spot mistakes (e.g. paren
-    matching, syntax highlighting).  Examples: Emacs/ESS, gedit, Rstudio. 
+    matching, syntax highlighting).
  
   \item Use \texttt{.R} or \texttt{.r} as the filename suffix.  Avoid any
     temptation to put spaces (although \R does not mind) in your
@@ -1722,8 +1724,7 @@ file
 
 Don't forget \Rfunction{paste0()} where sep=''.
 
-(Humour): \url{http://simplystatistics.org/2013/01/31/paste0-is-statistical-computings-most-influential-contribution-of-the-21st-century/}
-
+(Humour?): \url{https://simplystatistics.org/posts/2013-01-31-paste0-is-statistical-computings-most-influential-contribution-of-the-21st-century/}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1864,9 +1865,10 @@ sum(sum)  ## can get confusing!
   ## To be clear about which function:
   base::sum(c(3,4))
   sum(c(3,4))
-  ## R is a lisp1 (as is scheme) with one space
-  ## common-lisp is a lisp-2, with one space for functions.
   @
+  R is a lisp1 (as is scheme) with one space.  Common-lisp is a
+  lisp-2, with one space for functions, and one for values.
+
 \end{frame}
 
 
@@ -1880,13 +1882,16 @@ sum(sum)  ## can get confusing!
   \texttt{S4} and \texttt{S4 ReferenceClasses}. 
   \texttt{S6} are lightweight reference classes.
   \ds
+
+  New in 2022: S7 written by R core and Posit members.
+  \ds
   
   Bioconductor provides many ad hoc classes to store, 
   manipulate and process microarray, RNA Seq, proteomics, 
   flow cytometry, \ldots data. \ds  
   
-  It there is interest, we could have a session about OO programming 
-  at the end of the course.   
+  % It there is interest, we could have a session about OO programming 
+  % at the end of the course.   
 \end{frame}
 
 
@@ -2004,7 +2009,7 @@ Zoom in on text of PNG to see limitations of this format.
   \begin{itemize}
   \item base graphics (or ``traditional'')
   \item \Rpackage{lattice}/\Rpackage{grid}  (lattice is built upon grid)
-  \item \Rpackage{ggplot2} -- \url{http://had.co.nz/ggplot2/}
+  \item \Rpackage{ggplot2} -- \url{https://ggplot2.tidyverse.org/}
   \item Patchwork
   \end{itemize}
 \end{frame}
@@ -2045,7 +2050,9 @@ Here are some starting points to explore:
 
 \item \R graphics gallery \\
   \url{http://www.r-graph-gallery.com}
-  
+
+\item \R graphics cookbook \\
+  \url{https://r-graphics.org}
 \end{itemize}
 \end{frame}
 
@@ -2911,7 +2918,7 @@ expression \ri{a+b+c}.
 
   ``premature optimization is the root of all evil'' (Knuth, 1974).\ds
 
-  Examples adopted from \url{www.mathworks.com/res/code_segments}
+  Examples adopted from \url{www.mathworks.com/res/code_segments} (broken)
   
   \Rfunction{f1} is bad; should pre-allocate vector, rather than rely on \R to
   allocate memory repeatedly\footnote{
@@ -3127,7 +3134,7 @@ See \textbf{An introduction to the Interactive Debugging Tools in \R,
 \url{http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf}
 
 For a more modern approach
-\url{https://www.rstudio.com/products/rstudio/release-notes/debugging-with-rstudio/}
+\url{https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-RStudio/}
 
 \begin{itemize}
 
@@ -3282,7 +3289,7 @@ detach("package:cluster") ## remove pkg.
 \begin{frame}[fragile]
   \frametitle{CRAN: Comprehensive \R Archive Network}
 
-  CRAN: Site(s) for downloading \R, and also its many contributed *packages*.
+  CRAN: Site(s) for downloading \R and also its many contributed *packages*.
 
   Mac/Win have a GUI for installing packages, or it can be done on the command line:
 
@@ -3298,9 +3305,9 @@ If asked to selected a CRAN mirror, in UK use:
 
 For Bioconductor
 <<bioclist, eval=FALSE>>=
-source("http://www.bioconductor.org/biocLite.R")
-library("BiocInstaller")
-biocLite("Biobase")
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version = "3.17")
 @ 
 
 \end{frame}
@@ -3341,7 +3348,7 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
     research (vignettes) \ldots
 
   \item Gentleman et al. (2004) Genome Biology 5:R80.
-    \url{http://genomebiology.com/2004/5/10/R80}
+    \url{https://doi.org/10.1186/gb-2004-5-10-r80}
 
   \end{itemize}
 \end{frame}
@@ -3363,7 +3370,7 @@ export R_LIBS=$HOME/NOBACKUP/RLIB
     \item Access to databases.  Computational Biology datasets are
       often quite large, and you might wish to access data via
       databases.  \R package DBI provides common interface to SQLite,
-      MySQL, Oracle.  See Gentleman (2008), Chapter 8.
+      MySQL, Oracle.  \url{https://www.r-dbi.org/}
 
   \end{itemize}
 \end{frame}
