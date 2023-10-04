@@ -314,6 +314,29 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
   \end{block}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{Why R?}
+
+
+  \begin{itemize}
+  \item Many languages to choose from.
+
+  \item Python -- great!  (Mojo lang looks promising.)
+
+  \item Julia  -- great!
+
+  \item R  -- very popular in computational biology.
+
+  \item C -- great! 
+
+  \item Matlab -- great idea, terrible licence.
+
+  \item Many concepts are shared among high level languages.  Use
+    right tool for the problem at hand.
+  \end{itemize}
+\end{frame}
+
 \begin{frame}
   \frametitle{What is \R?}
   \begin{itemize}
@@ -335,7 +358,7 @@ John M. Chambers, \textit{Software for Data Analysis} (Springer)
     Robert Gentleman (NZ).
   \item 1993: first announcement.
   \item 1995: 0.60 release, now under GPL.
-  \item 2022-09-18: release 4.2.1.  Stable, multi-platform. Major release every April.
+  \item 2023-06-16: release 4.3.1.  Stable, multi-platform. Major release every April.
   \item R-core now 20 people, key researchers in field, including John Chambers. 
     \url{https://www.r-project.org/contributors.html}
   \end{itemize}
